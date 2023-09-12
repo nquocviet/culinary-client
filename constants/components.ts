@@ -44,6 +44,22 @@ export const components: any = {
 			},
 		}),
 	},
+	Drawer: {
+		styles: () => ({
+			overlay: {
+				backgroundColor: 'rgba(0, 0, 0, 0.25)',
+			},
+		}),
+	},
+	Menu: {
+		styles: () => ({
+			item: {
+				'&:hover': {
+					backgroundColor: 'var(--gray-50)',
+				},
+			},
+		}),
+	},
 	NumberInput: {
 		styles: (theme, _, { size }) => ({
 			label: {

@@ -131,9 +131,11 @@
 
 body {
 	color: var(--black);
+	font-family: var(--ff-catamaran);
 	font-weight: var(--fw-regular);
 	font-size: var(--fs-text-md);
 	line-height: var(--lh-text-md);
+	min-height: 100vh;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -169,4 +171,18 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
 	-moz-appearance: textfield;
+}
+
+.line-clamp-1 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }

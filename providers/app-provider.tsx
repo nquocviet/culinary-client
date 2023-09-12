@@ -21,7 +21,7 @@ const AppProvider = ({ children }: AppProviderProps) => {
 			<MantineProvider
 				theme={{
 					colors: COLORS_THEME,
-					fontFamily: 'inherit',
+					fontFamily: 'var(--ff-catamaran)',
 					primaryColor: 'primary',
 					components,
 				}}

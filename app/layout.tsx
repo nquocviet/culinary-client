@@ -1,5 +1,5 @@
 import {
-	Inter as FontInter,
+	Catamaran as FontCatamaran,
 	Merriweather as FontMerriweather,
 } from 'next/font/google'
 
@@ -14,9 +14,10 @@ const fontMerriweather = FontMerriweather({
 	variable: '--ff-merriweather',
 })
 
-const fontInter = FontInter({
+const fontCatamaran = FontCatamaran({
 	subsets: ['latin'],
-	variable: '--ff-inter',
+	weight: ['300', '400', '500', '600', '700', '800', '900'],
+	variable: '--ff-catamaran',
 })
 
 interface RootLayoutProps {
@@ -68,7 +69,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head />
-			<body className={`${fontMerriweather.variable} ${fontInter.variable}`}>
+			<body
+				className={`${fontMerriweather.variable} ${fontCatamaran.variable}`}
+			>
 				<AppProvider>{children}</AppProvider>
 			</body>
 		</html>
