@@ -88,7 +88,9 @@ const Navbar = ({ opened, onClose }: NavbarProps) => {
 						}}
 					>
 						<Burger opened={false} onClick={onClose} size="sm" />
-						<Logo />
+						<Link href={ROUTES.HOME}>
+							<Logo />
+						</Link>
 					</Flex>
 				</MantineNavbar.Section>
 

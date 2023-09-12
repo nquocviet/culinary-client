@@ -173,6 +173,16 @@ input[type='number'] {
 	-moz-appearance: textfield;
 }
 
+.custom-link {
+	cursor: pointer;
+	color: var(--blue-600);
+	text-decoration: none;
+}
+
+.custom-link:hover {
+	text-decoration: underline;
+}
+
 .line-clamp-1 {
 	overflow: hidden;
 	display: -webkit-box;

@@ -89,6 +89,28 @@ export const components: any = {
 			},
 		}),
 	},
+	PasswordInput: {
+		styles: (theme) => ({
+			label: {
+				fontSize: 'var(--fs-text-sm)',
+				marginBottom: '0.375rem',
+			},
+			input: {
+				borderColor: theme.colors.gray[3],
+				'&[readonly]:focus-within': {
+					borderColor: `${theme.colors.gray[3]} !important`,
+				},
+				'&:not([readonly]):focus-within': {
+					borderColor: `${theme.colors.gray[5]} !important`,
+				},
+			},
+			innerInput: {
+				'&::placeholder': {
+					color: theme.colors.gray[4],
+				},
+			},
+		}),
+	},
 	RichTextEditor: {
 		styles: (theme) => ({
 			root: {

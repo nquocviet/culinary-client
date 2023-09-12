@@ -1,41 +1,39 @@
 import { ReactNode } from 'react'
-import { rem, Text } from '@mantine/core'
+import { Text, TextProps } from '@mantine/core'
 import Link, { LinkProps } from 'next/link'
 
 interface CustomLinkProps extends LinkProps {
 	children: ReactNode
-	leading?: ReactNode
-	trailing?: ReactNode
+	colored?: boolean
 	className?: string
+	textProps?: TextProps
 }
 
 const CustomLink = ({
 	href,
 	children,
-	leading,
-	trailing,
+	colored,
 	className,
+	textProps,
+	...props
 }: CustomLinkProps) => {
 	return (
 		<Text
 			component={Link}
 			href={href}
 			className={className}
+			{...props}
+			{...textProps}
 			sx={{
-				display: 'inline-flex',
-				alignItems: 'center',
-				gap: rem(12),
-				fontWeight: 'var(--fw-medium)' as 'normal',
-				color: 'var(--gray-800)',
+				color: colored ? 'var(--blue-600)' : 'var(--gray-800)',
 				textDecoration: 'none',
 				'&:hover': {
 					textDecoration: 'underline',
 				},
+				...textProps?.sx,
 			}}
 		>
-			{leading && leading}
 			{children}
-			{trailing && trailing}
 		</Text>
 	)
 }

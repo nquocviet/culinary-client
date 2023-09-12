@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { AppShell, Container } from '@mantine/core'
+import { AppShell, Container, rem } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 
 import { Footer, Header, Navbar } from '@/components'
@@ -31,7 +31,13 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
 		>
 			<Container
 				py={16}
-				className="flex h-full flex-col items-stretch gap-6"
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'stretch',
+					gap: rem(24),
+					height: '100%',
+				}}
 				fluid
 			>
 				{children}
