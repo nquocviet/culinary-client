@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import {
 	Button,
 	Modal as MantineModal,
+	ModalBaseHeaderProps,
 	ModalBaseProps,
 	rem,
 } from '@mantine/core'
@@ -13,13 +14,16 @@ export type ModalOpenedProps = {
 	onClose: (value?: React.SetStateAction<boolean>) => void
 }
 
-interface ModalProps extends Omit<ModalBaseProps, '__staticSelector'> {
+interface ModalProps
+	extends Omit<ModalBaseProps, '__staticSelector' | 'title'> {
+	title?: string | ReactNode
 	centered?: boolean
 	closeOnConfirm?: boolean
 	closeOnCancel?: boolean
 	cancelText?: string
 	confirmText?: string
 	rightActionSection?: ReactNode
+	headerProps?: ModalBaseHeaderProps
 	onCancel?: () => void
 	onConfirm?: () => void
 }
@@ -34,6 +38,7 @@ const Modal = ({
 	cancelText,
 	confirmText,
 	rightActionSection,
+	headerProps,
 	onClose,
 	onCancel,
 	onConfirm,
@@ -54,9 +59,16 @@ const Modal = ({
 		>
 			<MantineModal.Overlay />
 			<MantineModal.Content>
-				<MantineModal.Header px={24} pt={24} pb={0} sx={{ zIndex: 1000 }}>
+				<MantineModal.Header
+					px={24}
+					pt={24}
+					pb={0}
+					sx={{ zIndex: 1000 }}
+					{...headerProps}
+				>
 					<MantineModal.Title
 						sx={{
+							width: '100%',
 							fontSize: 'var(--fs-display-xs)',
 							fontWeight: 'var(--fw-semibold)' as 'bold',
 							fontFamily: 'var(--ff-merriweather)',

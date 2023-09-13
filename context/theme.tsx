@@ -1,8 +1,7 @@
 'use client'
 
 import React, { ReactNode, useCallback, useEffect, useState } from 'react'
-
-import { useLocalStorage } from '@/hooks'
+import { useLocalStorage } from '@mantine/hooks'
 
 type Theme = 'light' | 'dark'
 type ThemeContext = {
@@ -24,10 +23,10 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
 	children,
 }) => {
 	const [theme, setTheme] = useState<Theme>(defaultValue)
-	const [themeLocal, setThemeLocal] = useLocalStorage<Theme>(
-		THEME_KEY,
-		defaultValue
-	)
+	const [themeLocal, setThemeLocal] = useLocalStorage<Theme>({
+		key: THEME_KEY,
+		defaultValue,
+	})
 
 	const themeSetter = useCallback(
 		(theme: Theme) => {

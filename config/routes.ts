@@ -16,4 +16,5 @@ export const ROUTES = {
 	REPORT_HISTORY: '/report-history',
 	PRIVACY_POLICY: '/privacy-policy',
 	TERMS_OF_SERVICE: '/terms',
+	NOTIFICATIONS: '/notifications',
 } as const

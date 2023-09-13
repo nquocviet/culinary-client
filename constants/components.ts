@@ -17,12 +17,26 @@ export const components: any = {
 				color:
 					params.color === 'primary' && variant === 'filled'
 						? theme.colors.black
+						: params.color === 'primary' && variant === 'light'
+						? theme.colors.primary[8]
 						: undefined,
 				borderColor:
 					params.color === 'gray' && variant === 'outline'
 						? theme.colors.gray[3]
 						: undefined,
+				backgroundColor:
+					params.color === 'gray' && variant === 'default'
+						? theme.colors.gray[1]
+						: params.color === 'primary' && variant === 'light'
+						? theme.colors.primary[3]
+						: undefined,
 				height: size === 'md' ? rem(40) : undefined,
+				'&:hover': {
+					backgroundColor:
+						params.color === 'primary' && variant === 'light'
+							? theme.colors.primary[4]
+							: undefined,
+				},
 			},
 			leftIcon: {
 				color:
@@ -38,6 +52,9 @@ export const components: any = {
 				'&::after': {
 					borderColor: 'var(--gray-200)',
 				},
+			},
+			horizontal: {
+				borderColor: 'var(--gray-200)',
 			},
 			vertical: {
 				borderColor: 'var(--gray-300)',

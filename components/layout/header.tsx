@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	ActionIcon,
 	Avatar,
@@ -11,31 +11,23 @@ import {
 	rem,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import {
-	BellSimple,
-	BookmarkSimple,
-	CaretRight,
-	ChatDots,
-	CirclesThreePlus,
-	FolderSimpleUser,
-	GearSix,
-	Moon,
-	Question,
-	SignOut,
-} from '@phosphor-icons/react'
+import { BellSimple } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import {
+	AppearanceDropdown,
 	AppSearch,
-	AvatarGroup,
+	CreateDropdown,
 	LoginForm,
 	Logo,
 	Modal,
+	NotificationDropdown,
 	RegisterForm,
+	UserDropdown,
 } from '@/components'
 import { ROUTES } from '@/config/routes'
-import { TRANSITION_TIME } from '@/constants/common'
+import { MENU_DROPDOWN, TRANSITION_TIME } from '@/constants/common'
 import { HEADER_HEIGHT } from '@/constants/layout'
 
 interface HeaderProps {
@@ -49,11 +41,21 @@ const MODAL_MODE = {
 	REGISTER: 'REGISTER',
 } as const
 
-const isLoggedIn = false
+const isLoggedIn = true
+
+const subDropdowns = {
+	[MENU_DROPDOWN.CREATE]: CreateDropdown,
+	[MENU_DROPDOWN.APPEARANCE]: AppearanceDropdown,
+}
 
 const Header = ({ toggle }: HeaderProps) => {
 	const pathname = usePathname()
 	const [modalMode, setModalMode] = useState<null | ModalMode>(null)
+	const [menuOpened, setMenuOpened] = useState(false)
+	const [openSubDropdown, setOpenSubDropdown] = useState<boolean>(false)
+	const [currentSubDropdown, setCurrentSubDropdown] = useState<null | string>(
+		null
+	)
 	const [loginOpened, { open: openLogin, close: closeLogin }] =
 		useDisclosure(false)
 	const [registerOpened, { open: openRegister, close: closeRegister }] =
@@ -61,6 +63,7 @@ const Header = ({ toggle }: HeaderProps) => {
 	const isAuthPage = ([ROUTES.LOGIN, ROUTES.REGISTER] as string[]).includes(
 		pathname
 	)
+	const SubDropdown = currentSubDropdown && subDropdowns[currentSubDropdown]
 
 	useEffect(() => {
 		if (loginOpened || registerOpened) return
@@ -68,9 +71,29 @@ const Header = ({ toggle }: HeaderProps) => {
 		setTimeout(() => setModalMode(null), TRANSITION_TIME)
 	}, [loginOpened, registerOpened])
 
-	const onChangeMode = useCallback((mode: ModalMode) => {
+	useEffect(() => {
+		if (menuOpened) return
+
+		setTimeout(() => {
+			setOpenSubDropdown(false)
+			setCurrentSubDropdown(null)
+		}, TRANSITION_TIME)
+	}, [menuOpened])
+
+	const onChangeMode = (mode: ModalMode) => {
 		setModalMode(mode)
-	}, [])
+	}
+
+	const toggleSubDropdown = (subDropdown: string | null) => {
+		if (subDropdown) {
+			setOpenSubDropdown(true)
+			setCurrentSubDropdown(subDropdown)
+			return
+		}
+
+		setOpenSubDropdown(false)
+		setCurrentSubDropdown(null)
+	}
 
 	return (
 		<MantineHeader
@@ -91,15 +114,28 @@ const Header = ({ toggle }: HeaderProps) => {
 					<Flex align="center" gap={12}>
 						{isLoggedIn ? (
 							<>
-								<ActionIcon
-									variant="subtle"
-									color="gray"
-									size="lg"
-									aria-label="Notification"
+								<Menu shadow="md" width={340} position="bottom-end">
+									<Menu.Target>
+										<ActionIcon
+											variant="subtle"
+											color="gray"
+											size="lg"
+											aria-label="Notification"
+										>
+											<BellSimple size={24} />
+										</ActionIcon>
+									</Menu.Target>
+									<Menu.Dropdown p={0}>
+										<NotificationDropdown />
+									</Menu.Dropdown>
+								</Menu>
+								<Menu
+									opened={menuOpened}
+									onChange={setMenuOpened}
+									shadow="md"
+									width={300}
+									position="bottom-end"
 								>
-									<BellSimple size={24} />
-								</ActionIcon>
-								<Menu shadow="md" width={300} position="bottom-end">
 									<Menu.Target>
 										<ActionIcon variant="transparent" color="gray" size="lg">
 											<Avatar color="gray" radius="xl" size={32}>
@@ -108,42 +144,11 @@ const Header = ({ toggle }: HeaderProps) => {
 										</ActionIcon>
 									</Menu.Target>
 									<Menu.Dropdown>
-										<AvatarGroup
-											title="Username"
-											description="example@gmail.com"
-											containerProps={{
-												sx: {
-													padding: `${rem(8)} ${rem(12)}`,
-												},
-											}}
-										/>
-										<Menu.Divider />
-										<Menu.Item icon={<FolderSimpleUser size={20} />}>
-											Management
-										</Menu.Item>
-										<Menu.Item
-											icon={<CirclesThreePlus size={20} />}
-											rightSection={<CaretRight size={20} />}
-										>
-											Create new
-										</Menu.Item>
-										<Menu.Item icon={<BookmarkSimple size={20} />}>
-											Bookmarks
-										</Menu.Item>
-										<Menu.Item icon={<SignOut size={20} />}>Sign out</Menu.Item>
-										<Menu.Divider />
-										<Menu.Item
-											icon={<Moon size={20} />}
-											rightSection={<CaretRight size={20} />}
-										>
-											Appearance
-										</Menu.Item>
-										<Menu.Item icon={<GearSix size={20} />}>Settings</Menu.Item>
-										<Menu.Divider />
-										<Menu.Item icon={<Question size={20} />}>FAQs</Menu.Item>
-										<Menu.Item icon={<ChatDots size={20} />}>
-											Send feedback
-										</Menu.Item>
+										{openSubDropdown ? (
+											<SubDropdown toggleSubDropdown={toggleSubDropdown} />
+										) : (
+											<UserDropdown toggleSubDropdown={toggleSubDropdown} />
+										)}
 									</Menu.Dropdown>
 								</Menu>
 							</>
