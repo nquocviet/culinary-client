@@ -17,15 +17,7 @@ const RegisterForm = ({ onChangeMode }: RegisterFormProps) => {
 	}, [])
 
 	return (
-		<Flex
-			direction="column"
-			align="stretch"
-			gap={32}
-			sx={{
-				width: '100%',
-				maxWidth: rem(400),
-			}}
-		>
+		<Flex direction="column" align="stretch" gap={32} w="100%">
 			<Flex direction="column" align="center" gap={4}>
 				<Title
 					order={2}

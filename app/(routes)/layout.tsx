@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { AppShell, Container, rem } from '@mantine/core'
+import { AppShell } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 
 import { Footer, Header, Navbar } from '@/components'
@@ -29,19 +29,7 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
 			header={<Header toggle={toggle} />}
 			footer={<Footer />}
 		>
-			<Container
-				py={16}
-				sx={{
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'stretch',
-					gap: rem(24),
-					height: '100%',
-				}}
-				fluid
-			>
-				{children}
-			</Container>
+			{children}
 			<Navbar opened={opened} onClose={close} />
 		</AppShell>
 	)

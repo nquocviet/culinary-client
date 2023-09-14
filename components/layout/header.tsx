@@ -41,7 +41,7 @@ const MODAL_MODE = {
 	REGISTER: 'REGISTER',
 } as const
 
-const isLoggedIn = true
+const isLoggedIn = false
 
 const subDropdowns = {
 	[MENU_DROPDOWN.CREATE]: CreateDropdown,
