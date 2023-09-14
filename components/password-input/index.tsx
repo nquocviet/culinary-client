@@ -15,7 +15,7 @@ interface PasswordInputProps<T extends FieldValues>
 const PasswordInput = <T extends FieldValues>({
 	control,
 	name,
-	...rest
+	...props
 }: PasswordInputProps<T>) => {
 	return (
 		<Controller
@@ -24,7 +24,7 @@ const PasswordInput = <T extends FieldValues>({
 			render={({ field, fieldState: { error } }) => (
 				<MantinePasswordInput
 					{...field}
-					{...rest}
+					{...props}
 					error={error?.message}
 					visibilityToggleIcon={({ reveal }) =>
 						reveal ? <Eye size={20} /> : <EyeSlash size={20} />

@@ -54,13 +54,13 @@ const HighlightIcon = ({
 	color = 'primary',
 	size = 'sm',
 	icon,
-	...rest
+	...props
 }: HighlightIconProps) => {
 	const { classes } = useStyles({ color })
 	const Icon = icon
 
 	return (
-		<span className={clsx(classes.base, classes[size])} {...rest}>
+		<span className={clsx(classes.base, classes[size])} {...props}>
 			<Icon size={iconSizes[size]} />
 		</span>
 	)

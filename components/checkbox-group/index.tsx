@@ -13,13 +13,13 @@ interface CheckboxGroupProps<T extends FieldValues>
 const CheckboxGroup = <T extends FieldValues>({
 	control,
 	name,
-	...rest
+	...props
 }: CheckboxGroupProps<T>) => {
 	return (
 		<Controller
 			control={control}
 			name={name}
-			render={({ field }) => <MantineCheckbox.Group {...field} {...rest} />}
+			render={({ field }) => <MantineCheckbox.Group {...field} {...props} />}
 		/>
 	)
 }

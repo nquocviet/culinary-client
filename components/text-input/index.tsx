@@ -15,7 +15,7 @@ const TextInput = <T extends FieldValues>({
 	control,
 	name,
 	textIcon,
-	...rest
+	...props
 }: TextInputProps<T>) => {
 	return (
 		<Controller
@@ -24,14 +24,14 @@ const TextInput = <T extends FieldValues>({
 			render={({ field, fieldState: { error } }) => (
 				<MantineTextInput
 					{...field}
-					{...rest}
+					{...props}
 					value={field.value ?? ''}
 					error={error?.message}
 					{...(textIcon && {
 						icon: textIcon,
 						iconWidth: 18,
 						styles: {
-							...rest.styles,
+							...props.styles,
 							icon: {
 								left: 4,
 								color: 'var(--gray-400)',

@@ -16,7 +16,7 @@ const Checkbox = <T extends FieldValues>({
 	control,
 	name,
 	rightIcon,
-	...rest
+	...props
 }: CheckboxProps<T>) => {
 	return (
 		<Flex align="center" gap={8}>
@@ -26,7 +26,7 @@ const Checkbox = <T extends FieldValues>({
 				render={({ field }) => (
 					<MantineCheckbox
 						{...field}
-						{...rest}
+						{...props}
 						checked={field.value ?? false}
 					/>
 				)}

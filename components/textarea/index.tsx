@@ -13,7 +13,7 @@ interface TextareaProps<T extends FieldValues> extends MantineTextareaProps {
 const Textarea = <T extends FieldValues>({
 	control,
 	name,
-	...rest
+	...props
 }: TextareaProps<T>) => {
 	return (
 		<Controller
@@ -22,7 +22,7 @@ const Textarea = <T extends FieldValues>({
 			render={({ field, fieldState: { error } }) => (
 				<MantineTextarea
 					{...field}
-					{...rest}
+					{...props}
 					value={field.value ?? ''}
 					error={error?.message}
 				/>

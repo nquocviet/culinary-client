@@ -24,7 +24,7 @@ const ContactPage = () => {
 			}}
 		>
 			<Box component="form" onSubmit={handleSubmit(onSubmit)} w="100%">
-				<Flex direction="column" align="stretch" gap={32} w="100%">
+				<Flex direction="column" align="stretch" gap={24} w="100%">
 					<Flex direction="column" align="center" gap={4}>
 						<Title
 							order={2}
@@ -113,6 +113,7 @@ const ContactPage = () => {
 					<Button
 						color="primary"
 						type="submit"
+						size="md"
 						leftIcon={<PaperPlaneRight size={20} />}
 					>
 						Send message

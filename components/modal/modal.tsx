@@ -42,11 +42,11 @@ const Modal = ({
 	onClose,
 	onCancel,
 	onConfirm,
-	...rest
+	...props
 }: ModalProps) => {
 	return (
 		<MantineModal.Root
-			{...rest}
+			{...props}
 			opened={opened}
 			onClose={onClose}
 			centered={centered ?? true}

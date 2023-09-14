@@ -32,7 +32,7 @@ const Dots = ({
 	color = 'black',
 	children,
 	className,
-	...rest
+	...props
 }: DotsProps) => {
 	return (
 		<Text
@@ -46,7 +46,7 @@ const Dots = ({
 				width: rem(size),
 				height: rem(size),
 			}}
-			{...rest}
+			{...props}
 		>
 			{children}
 		</Text>

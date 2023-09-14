@@ -68,6 +68,13 @@ export const components: any = {
 			},
 		}),
 	},
+	Dropzone: {
+		styles: (theme) => ({
+			root: {
+				border: `1px dashed ${theme.colors.gray[3]}`,
+			},
+		}),
+	},
 	Menu: {
 		styles: () => ({
 			item: {
