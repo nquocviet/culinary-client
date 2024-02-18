@@ -31,10 +31,10 @@ const groupsSearch = [
 ]
 
 const AppSearch = () => {
-	const [opened, { open, close }] = useDisclosure(false)
+	const [opened, { close, open }] = useDisclosure(false)
 	const [recentSearch, setRecentSearch] = useLocalStorage({
-		key: RECENT_SEARCH_KEY,
 		defaultValue: ['Curry', 'Blueberry', 'Healthy'],
+		key: RECENT_SEARCH_KEY,
 	})
 	const { control, watch } = useForm()
 	const textSearch = watch('q')
@@ -56,27 +56,27 @@ const AppSearch = () => {
 							>
 								{group}
 							</Text>
-							<Flex direction="column" align="stretch" gap={8}>
+							<Flex align="stretch" direction="column" gap={8}>
 								{results.map(({ title }, key) => (
 									<Flex
-										key={key}
-										justify="space-between"
 										align="center"
 										gap={16}
+										justify="space-between"
+										key={key}
 										px={12}
 										py={8}
 										sx={{
-											borderRadius: rem(4),
-											cursor: 'pointer',
-											transition: '225ms',
-											backgroundColor: 'var(--gray-50)',
-											color: 'var(--gray-800)',
 											'&:hover': {
 												backgroundColor: 'var(--primary-500)',
 											},
 											'&:hover mark': {
 												color: 'var(--gray-800)',
 											},
+											backgroundColor: 'var(--gray-50)',
+											borderRadius: rem(4),
+											color: 'var(--gray-800)',
+											cursor: 'pointer',
+											transition: '225ms',
 										}}
 									>
 										<Highlight
@@ -117,27 +117,27 @@ const AppSearch = () => {
 					</Text>
 					{recentSearch.map((text, key) => (
 						<Flex
-							key={key}
-							justify="space-between"
 							align="center"
 							gap={16}
+							justify="space-between"
+							key={key}
+							mx={-24}
 							px={24}
 							py={12}
-							mx={-24}
 							sx={{
+								'&:hover': { backgroundColor: 'var(--gray-50)' },
 								cursor: 'pointer',
 								transition: '225ms',
-								'&:hover': { backgroundColor: 'var(--gray-50)' },
 							}}
 						>
 							{text}
 							<Text
 								component="span"
-								sx={{
-									color: 'var(--gray-400)',
-									'&:hover': { color: 'var(--gray-900)' },
-								}}
 								role="button"
+								sx={{
+									'&:hover': { color: 'var(--gray-900)' },
+									color: 'var(--gray-400)',
+								}}
 							>
 								<X size={16} weight="bold" />
 							</Text>
@@ -148,8 +148,10 @@ const AppSearch = () => {
 		}
 
 		return (
-			<Flex justify="center" align="center" sx={{ minHeight: rem(160) }}>
-				<Text sx={{ color: 'var(--gray-600)' }}>No recent searches</Text>
+			<Flex align="center" justify="center" sx={{ minHeight: rem(160) }}>
+				<Text component="p" my={0} sx={{ color: 'var(--gray-600)' }}>
+					No recent searches
+				</Text>
 			</Flex>
 		)
 	}
@@ -158,18 +160,18 @@ const AppSearch = () => {
 		<>
 			<Button
 				color="gray"
-				variant="outline"
 				leftIcon={<MagnifyingGlass size={20} />}
 				styles={{
-					root: { width: 280, marginLeft: rem(8) },
 					inner: { justifyContent: 'flex-start' },
+					root: { marginLeft: rem(8), width: 280 },
 				}}
+				variant="outline"
 				onClick={open}
 			>
 				<Text
 					sx={{
-						paddingRight: rem(8),
 						fontWeight: 'var(--fw-semibold)' as 'bold',
+						paddingRight: rem(8),
 					}}
 				>
 					Ctrl K
@@ -177,29 +179,29 @@ const AppSearch = () => {
 				<Text>Quick search</Text>
 			</Button>
 			<Modal
+				headerProps={{
+					pr: 24,
+					px: undefined,
+					py: 12,
+				}}
 				opened={opened}
-				onClose={close}
+				size="lg"
 				title={
 					<TextInput
-						name="q"
 						control={control}
-						size="md"
 						icon={<MagnifyingGlass size={20} />}
+						name="q"
 						placeholder="Quick search"
+						size="md"
 						styles={{
 							input: {
-								borderRadius: 0,
 								border: 'none',
+								borderRadius: 0,
 							},
 						}}
 					/>
 				}
-				headerProps={{
-					py: 12,
-					px: undefined,
-					pr: 24,
-				}}
-				size="lg"
+				onClose={close}
 			>
 				<Divider mx={rem(-24)} />
 				{renderRecentSearch()}

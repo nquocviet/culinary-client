@@ -9,10 +9,10 @@ type AppearanceDropdownProps = {
 const AppearanceDropdown = ({ toggleSubDropdown }: AppearanceDropdownProps) => {
 	return (
 		<>
-			<Flex align="center" sx={{ padding: rem(2) }} gap={4}>
+			<Flex align="center" gap={4} sx={{ padding: rem(2) }}>
 				<ActionIcon
-					size="lg"
 					radius="xl"
+					size="lg"
 					onClick={() => toggleSubDropdown(null)}
 				>
 					<CaretLeft size={20} />

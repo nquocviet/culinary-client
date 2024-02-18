@@ -23,8 +23,8 @@ const Textarea = <T extends FieldValues>({
 				<MantineTextarea
 					{...field}
 					{...props}
-					value={field.value ?? ''}
 					error={error?.message}
+					value={field.value ?? ''}
 				/>
 			)}
 		/>

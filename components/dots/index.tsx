@@ -11,40 +11,40 @@ type DotsColors =
 	| 'green'
 
 interface DotsProps extends React.HTMLAttributes<HTMLSpanElement> {
-	size?: number
-	color?: DotsColors
 	children?: ReactNode
 	className?: string
+	color?: DotsColors
+	size?: number
 }
 
 const dotsColors = {
-	primary: '--primary-700',
-	gray: '--gray-500',
 	black: '--gray-900',
 	blue: '--blue-500',
+	gray: '--gray-500',
+	green: '--green-500',
+	primary: '--primary-700',
 	red: '--red-600',
 	yellow: '--yellow-500',
-	green: '--green-500',
 }
 
 const Dots = ({
-	size = 6,
-	color = 'black',
 	children,
 	className,
+	color = 'black',
+	size = 6,
 	...props
 }: DotsProps) => {
 	return (
 		<Text
-			component="span"
 			className={className}
+			component="span"
 			sx={{
+				backgroundColor: `var(${dotsColors[color]})`,
+				borderRadius: '50%',
 				display: 'inline-block',
 				flexShrink: 0,
-				borderRadius: '50%',
-				backgroundColor: `var(${dotsColors[color]})`,
-				width: rem(size),
 				height: rem(size),
+				width: rem(size),
 			}}
 			{...props}
 		>

@@ -9,18 +9,18 @@ import { notifications } from '@/components/layout/notification-dropdown'
 
 const NotificationsPage = () => {
 	return (
-		<Flex direction="column" justify="center" gap={24}>
+		<Flex direction="column" gap={24} justify="center">
 			<PageTitle title="Notifications" divider />
-			<Flex justify="space-between" align="center">
+			<Flex align="center" justify="space-between">
 				<Flex gap={8}>
-					<Button color="primary" variant="light" px={12}>
+					<Button color="primary" px={12} variant="light">
 						All
 					</Button>
-					<Button color="gray" variant="subtle" px={12}>
+					<Button color="gray" px={12} variant="subtle">
 						Unread
 					</Button>
 				</Flex>
-				<Menu width={220} position="bottom-end">
+				<Menu position="bottom-end" width={220}>
 					<Menu.Target>
 						<ActionIcon>
 							<DotsThree size={24} weight="bold" />

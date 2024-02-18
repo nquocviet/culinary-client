@@ -2,46 +2,50 @@ import React from 'react'
 import { Avatar, AvatarProps, Flex, FlexProps, Text } from '@mantine/core'
 
 interface AvatarGroupProps extends AvatarProps {
-	spacing?: number
-	title: string
-	description?: string
 	className?: string
 	containerProps?: FlexProps
+	description?: string
+	spacing?: number
+	title: string
 }
 
 const AvatarGroup = ({
-	spacing = 10,
-	title,
-	description,
 	className,
 	containerProps,
+	description,
+	spacing = 10,
+	title,
 	...props
 }: AvatarGroupProps) => {
 	return (
 		<Flex
 			align="center"
-			gap={spacing}
 			className={className}
+			gap={spacing}
 			{...containerProps}
 		>
-			<Avatar size="md" radius="xl" color="gray" {...props} />
+			<Avatar color="gray" radius="xl" size="md" {...props} />
 			<div>
 				<Text
+					className="line-clamp-1"
+					component="p"
+					my={0}
 					sx={{
 						fontSize: 'var(--fs-text-sm)',
 						fontWeight: 'var(--fw-semibold)' as 'bold',
 					}}
-					className="line-clamp-1"
 				>
 					{title}
 				</Text>
 				{description && (
 					<Text
-						sx={{
-							fontSize: 'var(--fs-text-sm)',
-							color: 'var(--gray-500)',
-						}}
 						className="line-clamp-1"
+						component="p"
+						my={0}
+						sx={{
+							color: 'var(--gray-500)',
+							fontSize: 'var(--fs-text-sm)',
+						}}
 					>
 						{description}
 					</Text>

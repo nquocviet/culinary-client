@@ -7,60 +7,60 @@ import { ROUTES } from '@/config/routes'
 
 export const notifications = [
 	{
-		id: 1,
-		sender: 'Taylor Kinny',
 		action: 'liked your comment',
 		content: 'Lorem ipsum dolor sit amet consectetur adip',
-		isRead: false,
 		createdAt: new Date(),
+		id: 1,
+		isRead: false,
+		sender: 'Taylor Kinny',
 	},
 	{
-		id: 2,
-		sender: 'Magi Dawson',
 		action: 'made a new recipe',
 		content: 'Easy sheet pan baked eggs and veggies.',
-		isRead: true,
 		createdAt: new Date(),
+		id: 2,
+		isRead: true,
+		sender: 'Magi Dawson',
 	},
 	{
-		id: 3,
-		sender: 'Sophia Vargas',
 		action: 'liked your post',
 		content: 'Tomato gorgonzola bruschetta.',
-		isRead: false,
 		createdAt: new Date(),
+		id: 3,
+		isRead: false,
+		sender: 'Sophia Vargas',
 	},
 	{
-		id: 4,
-		sender: 'Laura Dern',
 		action: 'replied to your comment',
 		content: 'Lorem ipsum dolor sit amet consectenet',
-		isRead: false,
 		createdAt: new Date(),
+		id: 4,
+		isRead: false,
+		sender: 'Laura Dern',
 	},
 	{
-		id: 5,
-		sender: 'Taylor Kinny',
 		action: 'is now followed to you.',
 		content: '',
-		isRead: true,
 		createdAt: new Date(),
+		id: 5,
+		isRead: true,
+		sender: 'Taylor Kinny',
 	},
 	{
-		id: 6,
-		sender: 'Sophia Vargas',
 		action: 'rated your post',
 		content: 'Tomato gorgonzola bruschetta.',
-		isRead: false,
 		createdAt: new Date(),
+		id: 6,
+		isRead: false,
+		sender: 'Sophia Vargas',
 	},
 	{
-		id: 7,
-		sender: 'Taylor Kinny',
 		action: 'liked your blog',
 		content: '5 Snacks That Pair Well with Beer.',
-		isRead: true,
 		createdAt: new Date(),
+		id: 7,
+		isRead: true,
+		sender: 'Taylor Kinny',
 	},
 ]
 
@@ -68,8 +68,8 @@ const NotificationDropdown = () => {
 	return (
 		<>
 			<Flex
-				justify="space-between"
 				align="center"
+				justify="space-between"
 				sx={{
 					padding: `${rem(8)} ${rem(16)}`,
 				}}
@@ -85,20 +85,20 @@ const NotificationDropdown = () => {
 				</Text>
 				<Button
 					color="primary"
-					variant="white"
 					component={Link}
 					href={ROUTES.NOTIFICATIONS}
 					sx={{
-						padding: 0,
-						height: 'auto',
 						color: 'var(--primary-800)',
+						height: 'auto',
+						padding: 0,
 					}}
+					variant="white"
 				>
 					View all
 				</Button>
 			</Flex>
 			<Menu.Divider />
-			<ScrollArea w="100%" h={320} offsetScrollbars>
+			<ScrollArea h={320} w="100%" offsetScrollbars>
 				{notifications.map((notification) => (
 					<Notification key={notification.id} {...notification} />
 				))}

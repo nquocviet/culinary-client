@@ -56,9 +56,9 @@ const Header = ({ toggle }: HeaderProps) => {
 	const [currentSubDropdown, setCurrentSubDropdown] = useState<null | string>(
 		null
 	)
-	const [loginOpened, { open: openLogin, close: closeLogin }] =
+	const [loginOpened, { close: closeLogin, open: openLogin }] =
 		useDisclosure(false)
-	const [registerOpened, { open: openRegister, close: closeRegister }] =
+	const [registerOpened, { close: closeRegister, open: openRegister }] =
 		useDisclosure(false)
 	const isAuthPage = ([ROUTES.LOGIN, ROUTES.REGISTER] as string[]).includes(
 		pathname
@@ -101,9 +101,9 @@ const Header = ({ toggle }: HeaderProps) => {
 			sx={{ padding: `${rem(12)} ${rem(28)}` }}
 		>
 			<Flex align="center" sx={{ width: '100%' }}>
-				<Flex justify="space-between" align="center" sx={{ width: '100%' }}>
+				<Flex align="center" justify="space-between" sx={{ width: '100%' }}>
 					<Flex align="center" gap={16}>
-						<Burger opened={false} onClick={toggle} size="sm" />
+						<Burger opened={false} size="sm" onClick={toggle} />
 						<Link href={ROUTES.HOME}>
 							<Logo />
 						</Link>
@@ -114,13 +114,13 @@ const Header = ({ toggle }: HeaderProps) => {
 					<Flex align="center" gap={12}>
 						{isLoggedIn ? (
 							<>
-								<Menu shadow="md" width={340} position="bottom-end">
+								<Menu position="bottom-end" shadow="md" width={340}>
 									<Menu.Target>
 										<ActionIcon
-											variant="subtle"
+											aria-label="Notification"
 											color="gray"
 											size="lg"
-											aria-label="Notification"
+											variant="subtle"
 										>
 											<BellSimple size={24} />
 										</ActionIcon>
@@ -131,13 +131,13 @@ const Header = ({ toggle }: HeaderProps) => {
 								</Menu>
 								<Menu
 									opened={menuOpened}
-									onChange={setMenuOpened}
+									position="bottom-end"
 									shadow="md"
 									width={300}
-									position="bottom-end"
+									onChange={setMenuOpened}
 								>
 									<Menu.Target>
-										<ActionIcon variant="transparent" color="gray" size="lg">
+										<ActionIcon color="gray" size="lg" variant="transparent">
 											<Avatar color="gray" radius="xl" size={32}>
 												US
 											</Avatar>
@@ -157,8 +157,8 @@ const Header = ({ toggle }: HeaderProps) => {
 								<>
 									<Button
 										color="gray"
-										variant="text"
 										px="sm"
+										variant="text"
 										onClick={openLogin}
 									>
 										Sign in

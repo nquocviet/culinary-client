@@ -8,9 +8,9 @@ import { RegisterForm } from '@/components'
 const LoginPage = () => {
 	return (
 		<Flex
+			align="center"
 			direction="column"
 			justify="center"
-			align="center"
 			sx={{
 				height: '100%',
 			}}

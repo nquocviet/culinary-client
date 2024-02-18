@@ -2,25 +2,25 @@ import React, { ReactNode } from 'react'
 import { Flex, FlexProps, rem } from '@mantine/core'
 
 interface ModalActionProps extends FlexProps {
-	children: ReactNode
 	bordered?: boolean
+	children: ReactNode
 	fluid?: boolean
 }
 
 const ModalAction = ({
-	children,
 	bordered,
+	children,
 	fluid,
 	...props
 }: ModalActionProps) => {
 	return (
 		<Flex
-			justify="flex-end"
 			align="center"
 			gap={12}
+			justify="flex-end"
 			sx={{
-				width: '100%',
 				padding: `${rem(16)} ${rem(24)} 0`,
+				width: '100%',
 				...props.sx,
 				...(bordered && {
 					borderTop: '1px solid var(--gray-200)',

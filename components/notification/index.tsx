@@ -5,37 +5,39 @@ import { Dots } from '@/components'
 import { timeSince } from '@/utils'
 
 interface NotificationProps {
-	sender: string
 	action: string
 	content: string
-	isRead: boolean
 	createdAt: Date
+	isRead: boolean
+	sender: string
 }
 
 const Notification = ({
-	sender,
 	action,
 	content,
-	isRead,
 	createdAt,
+	isRead,
+	sender,
 }: NotificationProps) => {
 	return (
 		<Box
 			sx={{
-				position: 'relative',
-				cursor: 'pointer',
 				'&:hover': { backgroundColor: 'var(--gray-50)', transition: '225ms' },
+				cursor: 'pointer',
+				position: 'relative',
 			}}
 		>
 			<Flex
+				gap={16}
 				sx={{
 					padding: `${rem(6)} ${rem(20)} ${rem(6)} ${rem(8)}}`,
 				}}
-				gap={16}
 			>
-				<Avatar size="md" radius="xl" />
-				<Flex direction="column" align="stretch" gap={4}>
+				<Avatar radius="xl" size="md" />
+				<Flex align="stretch" direction="column" gap={4}>
 					<Text
+						component="p"
+						my={0}
 						sx={{ color: 'var(--gray-600)', fontSize: 'var(--fs-text-sm)' }}
 					>
 						<Text

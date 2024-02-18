@@ -16,33 +16,41 @@ const DropzoneImage = ({ label, onDrop, ...props }: DropzoneImageProps) => {
 			{label && <Label text={label} />}
 			<Dropzone
 				{...props}
-				onDrop={onDrop}
 				accept={IMAGE_MIME_TYPE}
 				sx={{
+					alignItems: 'center',
 					display: 'flex',
 					justifyContent: 'center',
-					alignItems: 'center',
 					minHeight: rem(98),
 					...props.sx,
 				}}
+				onDrop={onDrop}
 			>
 				<Group position="center" spacing="xl">
 					<div>
 						<Text align="center" mb={12}>
-							<HighlightIcon size="md" color="gray" icon={CloudArrowUp} />
+							<HighlightIcon color="gray" icon={CloudArrowUp} size="md" />
 						</Text>
 						<Text
-							size="sm"
 							align="center"
+							component="p"
+							my={0}
+							size="sm"
 							sx={{ fontWeight: 'var(--fw-medium)' as 'normal' }}
 						>
 							Drop your images here, or{' '}
-							<Text component="span" className="text-primary-700">
+							<Text className="text-primary-700" component="span">
 								click to browse
 							</Text>
 							.
 						</Text>
-						<Text size="sm" align="center" sx={{ color: 'var(--gray-600)' }}>
+						<Text
+							align="center"
+							component="p"
+							my={0}
+							size="sm"
+							sx={{ color: 'var(--gray-600)' }}
+						>
 							SVG, PNG, JPG or GIF (max. 10MB)
 						</Text>
 					</div>

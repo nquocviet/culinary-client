@@ -9,15 +9,15 @@ import { FOOTER_HEIGHT } from '@/constants/layout'
 const Footer = () => {
 	return (
 		<MantineFooter
-			height={FOOTER_HEIGHT}
 			fixed={false}
+			height={FOOTER_HEIGHT}
 			sx={{
-				position: 'static',
 				backgroundColor: 'var(--gray-50)',
 				padding: `${rem(16)} ${rem(28)}`,
+				position: 'static',
 			}}
 		>
-			<Flex justify="space-between" align="center">
+			<Flex align="center" justify="space-between">
 				<Flex align="center" gap={8}>
 					<CustomLink href={ROUTES.PRIVACY_POLICY}>Privacy policy</CustomLink>
 					<Dots size={4} />
@@ -25,7 +25,12 @@ const Footer = () => {
 						Terms of service
 					</CustomLink>
 				</Flex>
-				<Text align="center" sx={{ color: 'var(--text-gray-500)' }}>
+				<Text
+					align="center"
+					component="p"
+					my={0}
+					sx={{ color: 'var(--text-gray-500)' }}
+				>
 					&copy; {CURRENT_YEAR} {APP_NAME}. All rights reversed.
 				</Text>
 			</Flex>

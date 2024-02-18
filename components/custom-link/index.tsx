@@ -4,32 +4,32 @@ import Link, { LinkProps } from 'next/link'
 
 interface CustomLinkProps extends LinkProps {
 	children: ReactNode
-	colored?: boolean
 	className?: string
+	colored?: boolean
 	textProps?: TextProps
 }
 
 const CustomLink = ({
-	href,
 	children,
-	colored,
 	className,
+	colored,
+	href,
 	textProps,
 	...props
 }: CustomLinkProps) => {
 	return (
 		<Text
+			className={className}
 			component={Link}
 			href={href}
-			className={className}
 			{...props}
 			{...textProps}
 			sx={{
-				color: colored ? 'var(--blue-600)' : 'var(--gray-800)',
-				textDecoration: 'none',
 				'&:hover': {
 					textDecoration: 'underline',
 				},
+				color: colored ? 'var(--blue-600)' : 'var(--gray-800)',
+				textDecoration: 'none',
 				...textProps?.sx,
 			}}
 		>

@@ -3,13 +3,13 @@
 import { ReactNode } from 'react'
 import { Container, rem } from '@mantine/core'
 
-import { CONTAINER_WIDTH_SM } from '@/constants/layout'
+import { CONTAINER_WIDTH_MD } from '@/constants/layout'
 
-interface ContainerSMProps {
+interface ContainerMDProps {
 	children: ReactNode
 }
 
-const ContainerSM = ({ children }: ContainerSMProps) => {
+const ContainerMD = ({ children }: ContainerMDProps) => {
 	return (
 		<Container
 			py={16}
@@ -20,7 +20,7 @@ const ContainerSM = ({ children }: ContainerSMProps) => {
 				gap: rem(24),
 				height: '100%',
 			}}
-			w={CONTAINER_WIDTH_SM}
+			w={CONTAINER_WIDTH_MD}
 			fluid
 		>
 			{children}
@@ -28,4 +28,4 @@ const ContainerSM = ({ children }: ContainerSMProps) => {
 	)
 }
 
-export default ContainerSM
+export default ContainerMD

@@ -24,8 +24,8 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = ({
 }) => {
 	const [theme, setTheme] = useState<Theme>(defaultValue)
 	const [themeLocal, setThemeLocal] = useLocalStorage<Theme>({
-		key: THEME_KEY,
 		defaultValue,
+		key: THEME_KEY,
 	})
 
 	const themeSetter = useCallback(

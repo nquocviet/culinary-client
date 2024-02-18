@@ -19,10 +19,10 @@ import {
 import { ROUTES } from '@/config/routes'
 
 export type MenuItemType = {
-	label: string
 	href: string
-	subPaths?: string[]
 	icon?: Icon
+	label: string
+	subPaths?: string[]
 }
 
 export type MenuListType = Array<MenuItemType[]>
@@ -30,82 +30,82 @@ export type MenuListType = Array<MenuItemType[]>
 export const MENU_LIST: MenuListType = [
 	[
 		{
-			label: 'Home',
 			href: ROUTES.HOME,
 			icon: House,
+			label: 'Home',
 		},
 		{
-			label: 'Community',
 			href: ROUTES.COMMUNITY,
 			icon: GlobeHemisphereWest,
+			label: 'Community',
 		},
 		{
-			label: 'Recipes',
 			href: ROUTES.RECIPES,
 			icon: Book,
+			label: 'Recipes',
 		},
 		{
-			label: 'Blogs',
 			href: ROUTES.BLOGS,
 			icon: Notepad,
+			label: 'Blogs',
 		},
 		{
-			label: 'Bookmarks',
 			href: ROUTES.BOOKMARKS,
 			icon: BookmarkSimple,
+			label: 'Bookmarks',
 		},
 	],
 	[
 		{
-			label: 'About us',
 			href: ROUTES.ABOUT_US,
 			icon: Info,
+			label: 'About us',
 		},
 		{
-			label: 'Contact us',
 			href: ROUTES.CONTACT_US,
 			icon: AddressBook,
+			label: 'Contact us',
 		},
 		{
-			label: 'Guideline',
 			href: ROUTES.GUIDELINE,
 			icon: Notebook,
+			label: 'Guideline',
 		},
 	],
 	[
 		{
-			label: 'FAQs',
 			href: ROUTES.FAQS,
 			icon: Question,
+			label: 'FAQs',
 		},
 		{
-			label: 'Send feedback',
 			href: ROUTES.SEND_FEEDBACK,
 			icon: ChatDots,
+			label: 'Send feedback',
 		},
 	],
 	[
 		{
-			label: 'Settings',
 			href: ROUTES.SETTINGS,
 			icon: GearSix,
+			label: 'Settings',
 		},
 		{
-			label: 'Report history',
 			href: ROUTES.REPORT_HISTORY,
 			icon: ClockCounterClockwise,
+			label: 'Report history',
 		},
 	],
 	[
 		{
-			label: 'Privacy policy',
 			href: ROUTES.PRIVACY_POLICY,
 			icon: ShieldCheck,
+			label: 'Privacy policy',
 		},
 		{
-			label: 'Terms of service',
 			href: ROUTES.TERMS_OF_SERVICE,
 			icon: ClipboardText,
+			label: 'Terms of service',
 		},
 	],
 ]

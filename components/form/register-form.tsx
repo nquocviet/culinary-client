@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, Flex, rem, Text, Title } from '@mantine/core'
+import { Button, Flex, Text, Title } from '@mantine/core'
 
 import { Checkbox, CustomLink, PasswordInput, TextInput } from '@/components'
 import { ROUTES } from '@/config/routes'
@@ -17,8 +17,8 @@ const RegisterForm = ({ onChangeMode }: RegisterFormProps) => {
 	}, [])
 
 	return (
-		<Flex direction="column" align="stretch" gap={32} w="100%">
-			<Flex direction="column" align="center" gap={4}>
+		<Flex align="stretch" direction="column" gap={32} w="100%">
+			<Flex align="center" direction="column" gap={4}>
 				<Title
 					order={2}
 					sx={{
@@ -29,62 +29,62 @@ const RegisterForm = ({ onChangeMode }: RegisterFormProps) => {
 				>
 					Getting started
 				</Title>
-				<Text align="center">
+				<Text align="center" component="p" my={0}>
 					Create an account to continue and connect with the people.
 				</Text>
 			</Flex>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Flex direction="column" align="stretch" gap={16}>
+				<Flex align="stretch" direction="column" gap={16}>
 					<TextInput
-						name="email"
 						control={control}
-						size="md"
+						name="email"
 						placeholder="Email address"
+						size="md"
 					/>
 					<TextInput
-						name="username"
 						control={control}
-						size="md"
+						name="username"
 						placeholder="Username"
+						size="md"
 					/>
 					<PasswordInput
-						name="password"
 						control={control}
-						size="md"
+						name="password"
 						placeholder="Password"
+						size="md"
 					/>
-					<Flex justify="space-between" align="stretch" gap={16}>
+					<Flex align="stretch" gap={16} justify="space-between">
 						<Checkbox
-							name="acceptTerms"
 							control={control}
 							label={
 								<>
 									I accept the{' '}
 									<a
-										href={ROUTES.TERMS_OF_SERVICE}
 										className="custom-link"
-										target="_blank"
+										href={ROUTES.TERMS_OF_SERVICE}
 										rel="noopener noreferrer"
+										target="_blank"
 									>
 										Terms of Service
 									</a>{' '}
 									and{' '}
 									<a
-										href={ROUTES.PRIVACY_POLICY}
 										className="custom-link"
-										target="_blank"
+										href={ROUTES.PRIVACY_POLICY}
 										rel="noopener noreferrer"
+										target="_blank"
 									>
 										Privacy Policy
 									</a>
 								</>
 							}
+							name="acceptTerms"
 						/>
 					</Flex>
-					<Button type="submit" color="dark" variant="filled" size="md">
+					<Button color="dark" size="md" type="submit" variant="filled">
 						Register
 					</Button>
-					<Text align="center">
+					<Text align="center" component="p" my={0}>
 						Already have an account?{' '}
 						{onChangeMode ? (
 							<span className="custom-link" onClick={onChangeMode}>

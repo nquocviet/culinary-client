@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, Flex, rem, Text, Title } from '@mantine/core'
+import { Button, Flex, Text, Title } from '@mantine/core'
 
 import { Checkbox, CustomLink, PasswordInput, TextInput } from '@/components'
 import { ROUTES } from '@/config/routes'
@@ -17,8 +17,8 @@ const LoginForm = ({ onChangeMode }: LoginFormProps) => {
 	}, [])
 
 	return (
-		<Flex direction="column" align="stretch" gap={32} w="100%">
-			<Flex direction="column" align="center" gap={4}>
+		<Flex align="stretch" direction="column" gap={32} w="100%">
+			<Flex align="center" direction="column" gap={4}>
 				<Title
 					order={2}
 					sx={{
@@ -29,24 +29,26 @@ const LoginForm = ({ onChangeMode }: LoginFormProps) => {
 				>
 					Sign in
 				</Title>
-				<Text align="center">Welcome back, you&apos;ve been missed!</Text>
+				<Text align="center" component="p" my={0}>
+					Welcome back, you&apos;ve been missed!
+				</Text>
 			</Flex>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Flex direction="column" align="stretch" gap={16}>
+				<Flex align="stretch" direction="column" gap={16}>
 					<TextInput
-						name="username"
 						control={control}
-						size="md"
+						name="username"
 						placeholder="Username or email address"
+						size="md"
 					/>
 					<PasswordInput
-						name="password"
 						control={control}
-						size="md"
+						name="password"
 						placeholder="Password"
+						size="md"
 					/>
-					<Flex justify="space-between" align="stretch" gap={16}>
-						<Checkbox name="remember" control={control} label="Remember me" />
+					<Flex align="stretch" gap={16} justify="space-between">
+						<Checkbox control={control} label="Remember me" name="remember" />
 						<CustomLink
 							href={ROUTES.RESET_PASSWORD}
 							textProps={{
@@ -56,10 +58,10 @@ const LoginForm = ({ onChangeMode }: LoginFormProps) => {
 							Forgot password?
 						</CustomLink>
 					</Flex>
-					<Button type="submit" color="dark" variant="filled" size="md">
+					<Button color="dark" size="md" type="submit" variant="filled">
 						Login
 					</Button>
-					<Text align="center">
+					<Text align="center" component="p" my={0}>
 						Don&apos;t have an account yet?{' '}
 						{onChangeMode ? (
 							<span className="custom-link" onClick={onChangeMode}>

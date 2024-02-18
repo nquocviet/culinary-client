@@ -23,20 +23,20 @@ const UserDropdown = ({ toggleSubDropdown }: UserDropdownProps) => {
 	return (
 		<>
 			<AvatarGroup
-				title="Username"
-				description="example@gmail.com"
 				containerProps={{
 					sx: {
 						padding: `${rem(8)} ${rem(12)}`,
 					},
 				}}
+				description="example@gmail.com"
+				title="Username"
 			/>
 			<Menu.Divider />
 			<Menu.Item icon={<FolderSimpleUser size={20} />}>Management</Menu.Item>
 			<Menu.Item
+				closeMenuOnClick={false}
 				icon={<CirclesThreePlus size={20} />}
 				rightSection={<CaretRight size={16} />}
-				closeMenuOnClick={false}
 				onClick={() => toggleSubDropdown(MENU_DROPDOWN.CREATE)}
 			>
 				Create new
@@ -45,9 +45,9 @@ const UserDropdown = ({ toggleSubDropdown }: UserDropdownProps) => {
 			<Menu.Item icon={<SignOut size={20} />}>Sign out</Menu.Item>
 			<Menu.Divider />
 			<Menu.Item
+				closeMenuOnClick={false}
 				icon={<Moon size={20} />}
 				rightSection={<CaretRight size={16} />}
-				closeMenuOnClick={false}
 				onClick={() => toggleSubDropdown(MENU_DROPDOWN.APPEARANCE)}
 			>
 				Appearance

@@ -12,15 +12,15 @@ interface ContainerXSProps {
 const ContainerXS = ({ children }: ContainerXSProps) => {
 	return (
 		<Container
-			w={CONTAINER_WIDTH_XS}
 			py={16}
 			sx={{
+				alignItems: 'stretch',
 				display: 'flex',
 				flexDirection: 'column',
-				alignItems: 'stretch',
 				gap: rem(24),
 				height: '100%',
 			}}
+			w={CONTAINER_WIDTH_XS}
 			fluid
 		>
 			{children}

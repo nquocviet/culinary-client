@@ -18,11 +18,11 @@ import { ASIDE_WIDTH } from '@/constants/layout'
 import { MENU_LIST, MenuItemType } from '@/constants/menu'
 
 interface NavbarProps {
-	opened: boolean
 	onClose: () => void
+	opened: boolean
 }
 
-const MenuItem = ({ label, href, subPaths, icon: Icon }: MenuItemType) => {
+const MenuItem = ({ href, icon: Icon, label, subPaths }: MenuItemType) => {
 	const pathname = usePathname()
 	const domain = pathname.split('/')[1]
 	const active = useMemo(() => {
@@ -44,14 +44,6 @@ const MenuItem = ({ label, href, subPaths, icon: Icon }: MenuItemType) => {
 			component={Link}
 			href={href}
 			label={label}
-			sx={{
-				borderRadius: rem(4),
-				...(active && {
-					'&:hover': {
-						backgroundColor: 'var(--gray-200) !important',
-					},
-				}),
-			}}
 			styles={{
 				label: {
 					fontSize: 'var(--fs-text-md)',
@@ -60,6 +52,14 @@ const MenuItem = ({ label, href, subPaths, icon: Icon }: MenuItemType) => {
 					}),
 				},
 			}}
+			sx={{
+				borderRadius: rem(4),
+				...(active && {
+					'&:hover': {
+						backgroundColor: 'var(--gray-200) !important',
+					},
+				}),
+			}}
 			{...(Icon && {
 				icon: <Icon size={24} weight={active ? 'fill' : 'regular'} />,
 			})}
@@ -67,16 +67,16 @@ const MenuItem = ({ label, href, subPaths, icon: Icon }: MenuItemType) => {
 	)
 }
 
-const Navbar = ({ opened, onClose }: NavbarProps) => {
+const Navbar = ({ onClose, opened }: NavbarProps) => {
 	return (
 		<Drawer
 			opened={opened}
-			onClose={onClose}
 			size={ASIDE_WIDTH}
-			withCloseButton={false}
 			sx={{
 				paddingTop: 0,
 			}}
+			withCloseButton={false}
+			onClose={onClose}
 		>
 			<MantineNavbar h="100vh" px="md">
 				<MantineNavbar.Section>
@@ -87,7 +87,7 @@ const Navbar = ({ opened, onClose }: NavbarProps) => {
 							padding: rem(12),
 						}}
 					>
-						<Burger opened={false} onClick={onClose} size="sm" />
+						<Burger opened={false} size="sm" onClick={onClose} />
 						<Link href={ROUTES.HOME}>
 							<Logo />
 						</Link>
@@ -95,18 +95,18 @@ const Navbar = ({ opened, onClose }: NavbarProps) => {
 				</MantineNavbar.Section>
 
 				<MantineNavbar.Section
-					grow
 					component={ScrollArea}
 					mt="xs"
 					mx="-md"
-					px="md"
 					pb="xl"
+					px="md"
+					grow
 				>
 					<Flex
-						direction="column"
 						align="stretch"
-						gap={4}
 						className="font-medium"
+						direction="column"
+						gap={4}
 					>
 						{MENU_LIST.map((menu, index) => {
 							const isLast = index === MENU_LIST.length - 1

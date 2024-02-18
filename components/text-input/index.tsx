@@ -25,16 +25,16 @@ const TextInput = <T extends FieldValues>({
 				<MantineTextInput
 					{...field}
 					{...props}
-					value={field.value ?? ''}
 					error={error?.message}
+					value={field.value ?? ''}
 					{...(textIcon && {
 						icon: textIcon,
 						iconWidth: 18,
 						styles: {
 							...props.styles,
 							icon: {
-								left: 4,
 								color: 'var(--gray-400)',
+								left: 4,
 							},
 						},
 					})}

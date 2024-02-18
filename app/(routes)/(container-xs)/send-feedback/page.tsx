@@ -2,10 +2,10 @@
 
 import React, { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { Box, Button, Checkbox, Flex, Grid, Text, Title } from '@mantine/core'
+import { Box, Button, Flex, Text, Title } from '@mantine/core'
 import { PaperPlaneRight } from '@phosphor-icons/react'
 
-import { CheckboxGroup, DropzoneImage, Textarea, TextInput } from '@/components'
+import { DropzoneImage, Textarea } from '@/components'
 
 const SendFeedbackPage = () => {
 	const { control, handleSubmit } = useForm()
@@ -16,16 +16,16 @@ const SendFeedbackPage = () => {
 
 	return (
 		<Flex
+			align="center"
 			direction="column"
 			justify="center"
-			align="center"
 			sx={{
 				height: '100%',
 			}}
 		>
-			<Box component="form" onSubmit={handleSubmit(onSubmit)} w="100%">
-				<Flex direction="column" align="stretch" gap={24} w="100%">
-					<Flex direction="column" align="center" gap={4}>
+			<Box component="form" w="100%" onSubmit={handleSubmit(onSubmit)}>
+				<Flex align="stretch" direction="column" gap={24} w="100%">
+					<Flex align="center" direction="column" gap={4}>
 						<Title
 							order={2}
 							sx={{
@@ -36,18 +36,18 @@ const SendFeedbackPage = () => {
 						>
 							Send Feedback
 						</Title>
-						<Text align="center">
+						<Text align="center" component="p" my={0}>
 							Tell us what&apos;s problem so that we can improve our product.
 						</Text>
 					</Flex>
 					<Textarea
-						name="issue"
 						control={control}
-						label="Describe your issue or suggestion"
-						placeholder="Leave us your issue"
 						description="Please don't include any sensitive information"
-						size="md"
+						label="Describe your issue or suggestion"
 						minRows={4}
+						name="issue"
+						placeholder="Leave us your issue"
+						size="md"
 						required
 					/>
 					<DropzoneImage
@@ -56,9 +56,9 @@ const SendFeedbackPage = () => {
 					/>
 					<Button
 						color="primary"
-						type="submit"
-						size="md"
 						leftIcon={<PaperPlaneRight size={20} />}
+						size="md"
+						type="submit"
 					>
 						Send feedback
 					</Button>
